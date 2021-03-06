@@ -3,21 +3,21 @@ const slides = document.querySelectorAll('.slider-slide');
 const btnPauseFirst = document.querySelector('.audio-toggle--first');
 const btnPauseSecond = document.querySelector('.audio-toggle--second');
 const btnPauseThird = document.querySelector('.audio-toggle--third');
-const audioContainer = document.querySelectorAll('.audio')
-const audioNames = document.querySelectorAll('.audio-inner')
-const audiosVolume = document.querySelectorAll('.audio-volume')
-const audios = document.querySelectorAll('.audio-sound')
-const audiosFirst = Array.from(document.querySelectorAll('.audio-sound--first'))
-const audiosSecond = Array.from(document.querySelectorAll('.audio-sound--second'))
-const audiosThird = Array.from(document.querySelectorAll('.audio-sound--third'))
+const audioContainer = document.querySelectorAll('.audio');
+const audioNames = document.querySelectorAll('.audio-inner');
+const audiosVolume = document.querySelectorAll('.audio-volume');
+const audios = document.querySelectorAll('.audio-sound');
+const audiosFirst = Array.from(document.querySelectorAll('.audio-sound--first'));
+const audiosSecond = Array.from(document.querySelectorAll('.audio-sound--second'));
+const audiosThird = Array.from(document.querySelectorAll('.audio-sound--third'));
 const btnPrev = document.querySelector('.slider-btn--prev');
 const btnNext = document.querySelector('.slider-btn--next');
-const weatherInfo = document.querySelector('.weather-info')
+const weatherInfo = document.querySelector('.weather-info');
 const weatherInner = document.createElement('div');
 const form = document.forms['form'];
 const input = form.elements['location'];
-const sliderWrapper = document.querySelector('.slider-wrapper')
-const screenBtn = document.querySelector('.fullscreen')
+const sliderWrapper = document.querySelector('.slider-wrapper');
+const screenBtn = document.querySelector('.fullscreen');
 
 let isPlayFirstSound = false;
 let isPlaySecondSound = false;
@@ -27,15 +27,15 @@ let pageXend = null;
 let isFullScreen = false;
 let currentSlide;
 
-const soundsName1 = audiosFirst.map(elem => elem.dataset.sound)
-const soundsName2 = audiosSecond.map(elem => elem.dataset.sound)
-const soundsName3 = audiosThird.map(elem => elem.dataset.sound)
-audios.forEach(audio => audio.volume = 0.5)
+const soundsName1 = audiosFirst.map(elem => elem.dataset.sound);
+const soundsName2 = audiosSecond.map(elem => elem.dataset.sound);
+const soundsName3 = audiosThird.map(elem => elem.dataset.sound);
+audios.forEach(audio => audio.volume = 0.5);
 
 let objLocalStorage = {
     localValue: '',
     isLocalStorage: true
-}
+};
 
 
 
@@ -45,21 +45,21 @@ objLocalStorage.weatherCity = localStorage.getItem('weatherCity');
 
 if(objLocalStorage.localValue) {
     currentSlide = +objLocalStorage.localValue;
-    goToSlide(currentSlide)
-    audioNames[0].innerHTML = soundsName1[currentSlide]
-    audioNames[1].innerHTML = soundsName2[currentSlide]
-    audioNames[2].innerHTML = soundsName3[currentSlide]
-    delete objLocalStorage.localValue
+    goToSlide(currentSlide);
+    audioNames[0].innerHTML = soundsName1[currentSlide];
+    audioNames[1].innerHTML = soundsName2[currentSlide];
+    audioNames[2].innerHTML = soundsName3[currentSlide];
+    delete objLocalStorage.localValue;
 } else{
     currentSlide = 0;
     goToSlide(0);
-    audioNames[0].innerHTML = soundsName1[0]
-    audioNames[1].innerHTML = soundsName2[0]
-    audioNames[2].innerHTML = soundsName3[0]
+    audioNames[0].innerHTML = soundsName1[0];
+    audioNames[1].innerHTML = soundsName2[0];
+    audioNames[2].innerHTML = soundsName3[0];
 }
 
 if(objLocalStorage.weatherCity) {
-    getData(objLocalStorage.weatherCity)
+    getData(objLocalStorage.weatherCity);
 }
 // localStorage.clear()
 
@@ -98,21 +98,21 @@ function playAudio(currentSound, soundName1, soundName2, soundName3) {
 
 function pauseAudio(prevSound, isFirst, isSecond, isThird) {
     if(isFirst){
-        audiosFirst[prevSound].pause()
+        audiosFirst[prevSound].pause();
         isPlayFirstSound = false;
     }
     else if (isSecond){
-        audiosSecond[prevSound].pause()
+        audiosSecond[prevSound].pause();
         isPlaySecondSound = false;
     } 
     else if (isThird){
-        audiosThird[prevSound].pause()
+        audiosThird[prevSound].pause();
         isPlayThirdSound = false;
     }
     else {
-        audiosFirst[prevSound].pause()
-        audiosSecond[prevSound].pause()
-        audiosThird[prevSound].pause()
+        audiosFirst[prevSound].pause();
+        audiosSecond[prevSound].pause();
+        audiosThird[prevSound].pause();
     }
 }
 
@@ -131,25 +131,25 @@ function goToSlide(n) {
     let checkNumb;
 
     slides[currentSlide].className = 'slider-slide';
-    checkNumb = currentSlide
+    checkNumb = currentSlide;
     currentSlide = (n + slides.length) % slides.length;
     slides[currentSlide].className = 'slider-slide active';
 
     if(checkNumb < n){
-        prevSlide = (((currentSlide - 1) + slides.length) % slides.length )
+        prevSlide = (((currentSlide - 1) + slides.length) % slides.length );
     } else{
-        prevSlide = (((currentSlide + 1) + slides.length) % slides.length )
+        prevSlide = (((currentSlide + 1) + slides.length) % slides.length );
     }
 
     pauseAudio(prevSlide);
 
     if(objLocalStorage.isLocalStorage === true){
-        delete objLocalStorage.isLocalStorage
+        delete objLocalStorage.isLocalStorage;
     } else{
         playAudio(currentSlide, soundsName1, soundsName2, soundsName3);
-        btnPauseFirst.classList.add('audio-toggle--pause')
-        btnPauseSecond.classList.add('audio-toggle--pause')
-        btnPauseThird.classList.add('audio-toggle--pause')
+        btnPauseFirst.classList.add('audio-toggle--pause');
+        btnPauseSecond.classList.add('audio-toggle--pause');
+        btnPauseThird.classList.add('audio-toggle--pause');
     }
     localStorage.setItem('currentSlide', `${currentSlide}`);  
 }
@@ -157,34 +157,34 @@ function goToSlide(n) {
 //------------functions to pause audios
 function pushBtnFirst() {
     if(isPlayFirstSound) {
-        pauseAudio(currentSlide, true)
-        btnPauseFirst.classList.remove('audio-toggle--pause')
+        pauseAudio(currentSlide, true);
+        btnPauseFirst.classList.remove('audio-toggle--pause');
     }
     else{
-        playAudio(currentSlide, soundsName1)
-        btnPauseFirst.classList.add('audio-toggle--pause')  
+        playAudio(currentSlide, soundsName1);
+        btnPauseFirst.classList.add('audio-toggle--pause');
     }  
 }
 
 function pushBtnSecond() {
     if(isPlaySecondSound) {
-        pauseAudio(currentSlide, false, true)
-        btnPauseSecond.classList.remove('audio-toggle--pause')
+        pauseAudio(currentSlide, false, true);
+        btnPauseSecond.classList.remove('audio-toggle--pause');
     }
     else{
-        playAudio(currentSlide, null, soundsName2)
-        btnPauseSecond.classList.add('audio-toggle--pause')
+        playAudio(currentSlide, null, soundsName2);
+        btnPauseSecond.classList.add('audio-toggle--pause');
     }  
 }
 
 function pushBtnThird() {
     if(isPlayThirdSound) {
-        pauseAudio(currentSlide, false, false, true)
-        btnPauseThird.classList.remove('audio-toggle--pause')
+        pauseAudio(currentSlide, false, false, true);
+        btnPauseThird.classList.remove('audio-toggle--pause');
     }
     else{
-        playAudio(currentSlide, null, null, soundsName3)
-        btnPauseThird.classList.add('audio-toggle--pause')
+        playAudio(currentSlide, null, null, soundsName3);
+        btnPauseThird.classList.add('audio-toggle--pause');
     }   
 }
 
@@ -269,10 +269,12 @@ function onSubmitFormHandler(e){
 
 //------------touches
 function getDataFromMouseDown(e) {
+    pageXstart = 0;
     pageXstart += e.pageX; 
 }
 
 function getDataFromMouseUp(e) {
+    pageXend = 0;
     pageXend += e.pageX;
 
     if(pageXstart < pageXend && Math.abs(pageXstart - pageXend) > 175) {
@@ -283,6 +285,7 @@ function getDataFromMouseUp(e) {
         nextSlide();
     }
 }
+
 
 
 //------------activate full screen

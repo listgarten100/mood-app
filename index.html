@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link type="image/x-icon" href="assets/favicon.ico" rel="shortcut icon">
+  <link type="image/x-icon" href="assets/favicon.ico" rel="icon">
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;800&display=swap" rel="stylesheet">
+  <link type="text/css" href="css/owfont-regular.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <title>sound-app</title>
+</head>
+<body>
+  <main class="main">
+    <div class="slider">
+      <div class="slider-wrapper">
+        <div class="slider-slide">
+          <video class="video" playsinline autoplay muted loop>
+            <source src="assets/video/beach.mp4" type="video/mp4">
+          </video>
+          <audio data-sound="sound-of-the-sea" class="audio-sound audio-sound--first" preload></audio>
+          <audio data-sound="sea-birds" class="audio-sound audio-sound--second" preload></audio>
+          <audio data-sound="sea-background" class="audio-sound audio-sound--third" preload></audio>
+        </div>
+        <div class="slider-slide">
+          <video class="video" playsinline autoplay muted loop>
+            <source src="assets/video/butterfly.mp4" type="video/mp4">
+          </video>
+          <audio data-sound="morning-sound-birds" class="audio-sound audio-sound--first" preload></audio>
+          <audio data-sound="butterfly" class="audio-sound audio-sound--second" preload></audio>
+          <audio data-sound="morning-background" class="audio-sound audio-sound--third" preload></audio>
+        </div>
+        <div class="slider-slide">
+          <video class="video" playsinline autoplay muted loop>
+            <source src="assets/video/fall.mp4" type="video/mp4">
+          </video>
+          <audio data-sound="autumn-sound" class="audio-sound audio-sound--first" preload></audio>
+          <audio data-sound="noise-of-the-leaves" class="audio-sound audio-sound--second" preload></audio>
+          <audio data-sound="autumn-background" class="audio-sound audio-sound--third" preload></audio>
+        </div>
+        <div class="slider-slide">
+          <video class="video" playsinline autoplay muted loop>
+            <source src="assets/video/fire.mp4" type="video/mp4">
+          </video>
+          <audio data-sound="sound-fire" class="audio-sound audio-sound--first" preload></audio>
+          <audio data-sound="sound-room" class="audio-sound audio-sound--second" preload></audio>
+          <audio data-sound="fire-background" class="audio-sound audio-sound--third" preload></audio>
+        </div>
+        <div class="slider-slide">
+          <video class="video" playsinline autoplay muted loop>
+            <source src="assets/video/grass.mp4" type="video/mp4">
+          </video>
+          <audio data-sound="noise-of-grass" class="audio-sound audio-sound--first" preload></audio>
+          <audio data-sound="morning-sound-birds" class="audio-sound audio-sound--second" preload></audio>
+          <audio data-sound="morning-background" class="audio-sound audio-sound--third" preload></audio>
+        </div>
+        <div class="slider-slide">
+          <video class="video" playsinline autoplay muted loop>
+            <source src="assets/video/lake.mp4" type="video/mp4">
+          </video>
+          <audio data-sound="waterfall" class="audio-sound audio-sound--first" preload></audio>
+          <audio data-sound="waterfall-birds" class="audio-sound audio-sound--second" preload></audio>
+          <audio data-sound="waterfall-background" class="audio-sound audio-sound--third" preload></audio>
+        </div>
+      </div>
+      <button class="fullscreen openfullscreen"></button>
+      <div class="slider-btns">
+        <div class="slider-btn slider-btn--prev">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+          </svg>
+        </div>
+        <div class="slider-btn slider-btn--next">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar">
+      <header class="header">
+        <h1 class="header-title">SoundsApp</h1>
+      </header>
+      <main class="sidebar-main">
+      <ul class="playlist">
+        <li class="playlist-item audio">
+          <button class="audio-toggle audio-toggle--first" title="Turn on/off sound">
+          </button>
+          <label class="audio-inner" title="Volume">
+        </label>
+            <input class="audio-volume audio-volume--first" name="volume" data-sizing="%" type="range" min="0" max="100" value="50">
+         
+        </li>
+        <li class="playlist-item audio">
+          <button class="audio-toggle audio-toggle--second" title="Turn on/off sound">
+          </button>
+          <label class="audio-inner" title="Volume">
+        </label>
+            <input class="audio-volume audio-volume--second" name="volume" data-sizing="%" type="range" min="0" max="100" value="50">
+        
+        </li>
+        <li class="playlist-item audio">
+          <button class="audio-toggle audio-toggle--third" title="Turn on/off sound">
+          </button>
+          <label class="audio-inner" title="Volume">
+          </label>
+            <input class="audio-volume audio-volume--third" name="volume" data-sizing="%" type="range" min="0" max="100" value="50">
+        
+        </li>
+      </ul>
+      <div class="weather">
+        <form class="weather-form" name="form">
+          <input name="location" type="text" title="Find city" autocomplete="off" required>
+          <label for="location">
+            <span>Search location</span>
+          </label>
+        </form>
+        <div class="weather-info">
+            <p class="weather-text">Please, <span>type the city</span> to see the weather!</p>
+            <div class="weather-inner">
+            <h3 class="weather-city">City</h3>
+          <i class="weather-icon owf owf-800"></i>
+          <div class="weather-description">
+            <div class="weather-temperature">temp°C</div>
+            <div class="weather-appearance">clear</div>
+          </div>
+        </div>
+        </div>
+      </div>
+      </main>
+      <footer class="footer">
+        <a class="github" href="https://github.com/listgarten100" target="_blank" rel="noopener noreferrer">github</a>
+        <a class="rss" href="https://rs.school/js/" target="_blank" rel="noopener">
+          <span class="rss-year">'21</span>
+        </a>
+      </footer>
+    </div>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

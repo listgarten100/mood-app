@@ -292,9 +292,22 @@ function getDataFromMouseUp(e) {
 function activateFullscreen() {
     if(!isFullScreen){
     if(document.documentElement.requestFullscreen) {
-        document.documentElement.requestFullscreen();        
+        document.documentElement.requestFullscreen();  
+        isFullScreen = true;      
     }
-    isFullScreen = true;
+   
+    else if (document.documentElement.mozRequestFullScreen) {
+        document.documentElement.mozRequestFullScreen(); 
+        isFullScreen = true;      // Firefox
+      }
+      else if (document.documentElement.webkitRequestFullscreen) {
+        document.documentElement.webkitRequestFullscreen();
+        isFullScreen = true;    // Safari
+      }
+      else if(document.documentElement.msRequestFullscreen) {
+        document.documentElement.msRequestFullscreen();
+        isFullScreen = true;        // IE/Edge
+      }
 }
 else{
     if(document.exitFullscreen) {

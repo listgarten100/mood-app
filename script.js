@@ -312,8 +312,16 @@ function activateFullscreen() {
 else{
     if(document.exitFullscreen) {
         document.exitFullscreen();
+        isFullScreen = false;
     }
-    isFullScreen = false;
+ 
+    else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+        isFullScreen = false;
+    } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+        isFullScreen = false;
+  } 
 }
 }
 
